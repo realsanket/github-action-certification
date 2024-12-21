@@ -1,0 +1,14 @@
+#publishing packages to github packages
+
+name: Publish packages
+on: [push]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+            - name: Publish package
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
