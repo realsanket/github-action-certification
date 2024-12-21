@@ -3,6 +3,8 @@ name: Artifacts and outputs
 on: [push]
 jobs:
     first_job:
+        outputs:
+            my_output: ${{ steps.artifact_output.outputs.artifact_url }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
@@ -19,7 +21,12 @@ jobs:
               run: |
                     ls -R
             - name: Archive files
+              id: my_archive
               uses: actions/upload-artifact@v4
               with:
                    name: my-artifact
                    path: dir*/file1.txt
+            - name: Set output
+              id: artifact_output
+              run: |
+                    echo "artifact-url=${{ steps.my_archive.outputs.artifact_url }}" >> "$GITHUB_OUTPUT" 
