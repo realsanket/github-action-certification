@@ -1,0 +1,4 @@
+name: Artifacts and outputs
+on: [push]
+jobs:
+  
