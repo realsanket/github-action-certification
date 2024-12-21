@@ -18,3 +18,8 @@ jobs:
             - name: List files and subdirectories
               run: |
                     ls -R
+            - name: Archive files
+              uses: actions/upload-artifact@v4
+              with:
+                   name: my-artifact
+                   
