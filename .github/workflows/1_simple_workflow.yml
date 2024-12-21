@@ -1,0 +1,13 @@
+# Simple workflow that work on dispatch event
+name: Simple Workflow
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World"
+      - name: multi-line command
+        run: |
+          echo "This is a multi-line command"
+          echo "This is the second line"
