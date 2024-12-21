@@ -34,7 +34,7 @@ jobs:
           echo "This is a multi-line command"
           echo "This is the second line"
   fourth_job:
-    needs: [second_job, third_job]
+    needs: [first_job, third_job]
     runs-on: ubuntu-latest
     steps:
       - name: Print Hello World
