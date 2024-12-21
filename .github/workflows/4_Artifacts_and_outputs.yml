@@ -5,6 +5,7 @@ jobs:
     first_job:
         outputs:
             my_output: ${{ steps.artifact_output.outputs.artifact_url }}
+            test: ${{ steps.artifact_output.outputs.test }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
@@ -30,6 +31,7 @@ jobs:
               id: artifact_output
               run: |
                     echo "artifact-url=${{ steps.my_archive.outputs.artifact-url }}" >> "$GITHUB_OUTPUT" 
+                    echo "test=world" >> "$GITHUB_OUTPUT"
     output_job:
         runs-on: ubuntu-latest
         needs: first_job
