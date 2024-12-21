@@ -9,9 +9,13 @@ name: Event testing
 on:
   push:
     branches:
-      - main
+      - main #event filter
+      - feature/* #run only for feature branches run only on feature/SSS not on / followed by /
+      - feature/** # RUn on features branches feature/SSS/SSS 
+      - '!feature/experimental' #exclude experimental feature branch
+      
   pull_request:
-    types:
+    types: #event types
       - opened
       - synchronize
   workflow_dispatch:
