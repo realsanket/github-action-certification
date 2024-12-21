@@ -36,3 +36,8 @@ jobs:
         env:
           EVENT_PAYLOAD: ${{ toJson(github.event.payload) }}
         run: echo "$EVENT_PAYLOAD"
+    #print event inputs
+      - name: Dump event inputs
+        env:
+          EVENT_INPUTS: ${{ toJson(inputs) }}
+        run: echo "$EVENT_INPUTS"
