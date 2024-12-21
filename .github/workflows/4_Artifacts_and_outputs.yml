@@ -29,4 +29,4 @@ jobs:
             - name: Set output
               id: artifact_output
               run: |
-                    echo "artifact-url=${{ steps.my_archive.outputs.artifact_url }}" >> "$GITHUB_OUTPUT" 
+                    echo "artifact-url=${{ steps.my_archive.outputs.artifact-url }}" >> "$GITHUB_OUTPUT" 
