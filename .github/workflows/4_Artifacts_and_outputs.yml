@@ -1,4 +1,20 @@
+# This workflow will demonstrate how to create artifacts and outputs in a workflow.
 name: Artifacts and outputs
 on: [push]
 jobs:
-  
+    first_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+            - name: create 10 files in 3 directories and file name in content following the space
+              run: |
+                    mkdir -p dir1 dir2 dir3
+                    for i in {1..10}; do
+                        echo "file $i" > dir1/file$i.txt
+                        echo "file $i" > dir2/file$i.txt
+                        echo "file $i" > dir3/file$i.txt
+                    done
+            - name: List files and subdirectories
+              run: |
+                    ls -R
