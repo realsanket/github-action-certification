@@ -1,0 +1,38 @@
+# Events in Github Actions are defined in the workflow file.
+# Events are the triggers that start a workflow run.
+# The most common event is push, which triggers a workflow run when a commit is pushed to the repository.
+# Other events include pull_request, which triggers a workflow run when a pull request is opened or updated.
+# The on key is used to define the event that triggers the workflow.
+# You can even filter the event further by using the types key.
+
+name: Event testing
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'A message to display'
+        required: true
+        default: 'Hello, world!'
+jobs:
+  dump_event_to_log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump event context
+        env:
+          EVENT_CONTEXT: ${{ toJson(github.event) }}
+        run: echo "$EVENT_CONTEXT"
+      - name: Dump event name
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: echo "$EVENT_NAME"
+      - name: Dump event payload
+        env:
+          EVENT_PAYLOAD: ${{ toJson(github.event.payload) }}
+        run: echo "$EVENT_PAYLOAD"
