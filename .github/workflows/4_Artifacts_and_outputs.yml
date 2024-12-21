@@ -36,7 +36,7 @@ jobs:
         steps:
             - name: Get output
               run: |
-                  echo "Output: ${{ needs.first_job.outputs.my_output }}"
+                  echo "Output: ${{ needs.first_job.outputs }}"
 
 
         
