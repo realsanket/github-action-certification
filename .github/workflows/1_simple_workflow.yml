@@ -1,6 +1,8 @@
 # Simple workflow that work on dispatch event
 name: Simple Workflow
-on: workflow_dispatch
+on: 
+    workflow_dispatch:
+    push:
 jobs:
   build:
     runs-on: ubuntu-latest
