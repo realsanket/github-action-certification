@@ -4,7 +4,7 @@ on: [push]
 jobs:
     first_job:
         outputs:
-            my_output: ${{ steps.artifact_output.outputs.artifact_url }}
+            my_output: ${{ steps.artifact_output.outputs.artifact-url }}
             test: ${{ steps.artifact_output.outputs.test }}
         runs-on: ubuntu-latest
         steps:
