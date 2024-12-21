@@ -34,11 +34,11 @@ jobs:
         runs-on: ubuntu-latest
         needs: first_job
         env:
-            artifact_output_url: ${{ needs.first_job.outputs.my_output }}
+            artifact_output_url: ${{ needs.first_job.outputs }}
         steps:
             - name: Get output
               run: |
-                  echo "Output: ${{ env.artifact_output_url }}"
+                  echo "All outputs: ${{ toJson(steps) }}"
 
 
         
