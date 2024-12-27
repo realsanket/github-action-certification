@@ -1,0 +1,30 @@
+name: Publish packages
+
+on:
+  push:
+jobs:
+  publish:
+    permissions:
+        contents: read
+        packages: write
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+
+      # Step 3: Configure npm authentication for GitHub Packages
+      - name: Authenticate with GitHub Packages
+        run: npm config set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
+
+      # Step 4: Publish the package
+      - name: Publish package
+        run: npm publish --access public
